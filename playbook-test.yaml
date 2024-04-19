@@ -1,0 +1,19 @@
+---
+- name: Base install
+  # hosts: all
+  hosts: taller
+  become: true
+  become_method: su
+  become_user: root
+
+  vars_files:
+    - ./vars.yaml
+
+  tasks:
+    - name: "Mostrar version del kernel de ansible"
+      debug:
+        var: ansible_kernel
+
+    - name: "Mostrar ejemplo de variable incluso en el nombre con contenido '{{ demo_var }}'"
+      debug:
+        var: demo_var
